@@ -47,7 +47,6 @@
 
       .poemArea,
       .puisiArea {
-        min-height: 140px;
         white-space: pre-wrap;
         font-size: 1.2rem;
         font-weight: 500;
@@ -197,7 +196,6 @@
 
     <audio id="bgmusic" autoplay loop hidden muted>
       <source src="musik.mp3" type="audio/mp3" />
-      Browser kamu tidak mendukung audio.
     </audio>
 
     <div class="card">
@@ -207,9 +205,7 @@
       <button id="tombolNama" onclick="tampilkanNama()">
         Klik di sini dulu...
       </button>
-
       <div class="name" id="namaTarget" style="display: none"></div>
-
       <div class="poemArea" id="mainText" style="display: none"></div>
 
       <button id="puisiButton" onclick="tampilkanPuisi()" style="display: none">
@@ -233,26 +229,55 @@
         }, kecepatan);
       }
 
-      const paragrafUtama = `Awalnya aku hanya mengenalmu sebagai sosok yang ramah dan sederhana.
-Tapi semakin aku tahu, semakin aku kagum.
-Bukan hanya wajahmu yang cantik, tapi hatimu yang begitu tulus.
+      const paragrafUtama = `Untukmu, Sayang…
 
-Emi Fatikha, kamu istimewa.
-Kamu membuatku ingin jadi versi terbaik dari diriku sendiri.
-Aku ingin bersamamu dalam tawa dan tangis, dalam doa dan perjuangan.
+Awalnya aku hanya mengenalmu sebagai sosok yang ramah dan sederhana.
+Tapi semakin aku mengenalmu, semakin aku mengagumimu.
+Bukan hanya karena wajahmu yang cantik, tapi karena hatimu yang begitu tulus.
+Caramu tersenyum, caramu berbicara dengan lembut, dan caramu peduli pada hal-hal kecil — semuanya membuatku merasa bahwa kamu adalah anugerah yang dikirim Tuhan di waktu yang paling tepat.
 
-Rasa ini tak sekadar suka...
-Tapi ingin menua bersamamu.
-Menjadi imam untukmu.
-Menjadi rumah saat kamu lelah.
+Sayang, kamu begitu istimewa.
+Sejak kehadiranmu, aku merasa hidupku punya arah yang lebih jelas.
+Kamu membuatku ingin jadi versi terbaik dari diriku sendiri — bukan karena kamu menuntut, tapi karena kamu pantas mendapatkan yang terbaik.
+Aku ingin mendampingimu dalam tawa dan tangis, dalam suka dan duka, dalam doa dan perjuangan.
 
-Aku tak bisa menjanjikan dunia...
-Tapi aku berjanji akan berusaha sekuat tenaga membuatmu bahagia.
-Jika Allah mengizinkan, aku ingin menjadikanmu pendamping hidupku selamanya. 💍`;
+Rasa ini tak sekadar suka…
+Ini lebih dari sekadar kagum atau nyaman.
+Aku ingin tumbuh bersamamu.
+Ingin berjuang bersamamu membangun rumah tangga yang penuh cinta, yang menjadikan Allah sebagai porosnya.
+Aku ingin menjadi orang pertama yang kamu temui saat bangun tidur, dan menjadi orang terakhir yang kamu peluk sebelum tidur.
+Aku ingin jadi imam yang menuntunmu, jadi tempat pulangmu, jadi pelindungmu.
+
+Aku tak bisa menjanjikan dunia…
+Aku bukan orang sempurna. Aku banyak kekurangan, banyak kelemahan.
+Tapi satu hal yang bisa kuusahakan: aku akan mencintaimu dengan seluruh hatiku.
+Akan kujaga kepercayaanmu, akan kujaga hatimu seperti menjaga hatiku sendiri.
+Aku akan belajar sabar bersamamu, belajar saling memahami, belajar menerima kekurangan satu sama lain.
+Karena aku percaya, cinta sejati tidak lahir dari kesempurnaan, tapi dari kesediaan untuk saling memperbaiki dan saling melengkapi.
+
+Aku membayangkan masa depan bersamamu…
+Kita duduk berdua di beranda rumah sederhana sambil minum teh hangat.
+Anak-anak kita bermain di halaman, dan kita saling menatap dengan mata yang penuh syukur.
+Hari-hari akan datang dengan segala tantangannya, tapi selama bersamamu, aku yakin kita bisa melewatinya.
+
+Aku ingin menua bersamamu, Sayang.
+Ingin melewati waktu dengan genggaman tanganmu yang hangat.
+Ingin menjadi saksi senyummu setiap pagi, dan menyeka air matamu ketika hari sedang berat.
+Aku ingin tumbuh dalam cinta yang tidak hanya manis, tapi juga kokoh dan berlandaskan iman.
+
+Jika Allah mengizinkan…
+Aku ingin menjadikanmu pendamping hidupku selamanya.
+Aku ingin melamarmu bukan hanya dengan kata-kata, tapi dengan kesungguhan, dengan kesiapan untuk bertanggung jawab atas cinta ini.
+Aku ingin kita menulis cerita bersama, hingga akhir usia.
+
+Semoga Allah meridhoi niat ini.
+Semoga Dia satukan dua hati yang sama-sama berharap dalam sujud-sujud panjang.
+Karena aku percaya, jika doaku bertemu dengan doamu, maka takdir akan menjodohkan kita dalam restu langit.
+
+💍 Dengan sepenuh hati, aku menunggumu di pelaminan, bukan hanya untuk hari itu, tapi untuk seumur hidup.`;
 
       function tampilkanNama() {
         document.getElementById("tombolNama").style.display = "none";
-
         const musik = document.getElementById("bgmusic");
         musik.muted = false;
         musik.volume = 0.6;
