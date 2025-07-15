@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Calon Istriku - Emi Fatikha</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Satisfy&family=Poppins:wght@300;500&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(12px);
+        max-width: 90%;
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+        animation: fadeIn 1.5s ease-in-out;
+        z-index: 1;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        font-family: "Satisfy", cursive;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .poemArea,
+      .puisiArea {
+        white-space: pre-wrap;
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.7;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+      .heart {
+        font-size: 1.5rem;
+        color: #ff4d6d;
+        animation: pulse 1.5s infinite;
+        display: inline-block;
+        margin: 15px 0;
+      }
+
+      .name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 2s infinite;
+        margin-top: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      button {
+        margin: 10px 5px;
+        padding: 10px 18px;
+        background-color: #ffffff33;
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #ffffff55;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -100%;
+        }
+        100% {
+          background-position: 100%;
+        }
+      }
+
+      .bunga {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url("https://cdn-icons-png.flaticon.com/512/747/747376.png");
+        background-size: cover;
+        opacity: 0.3;
+        animation: float 10s infinite linear;
+        z-index: 0;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .bunga:nth-child(1) {
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .bunga:nth-child(2) {
+        left: 20%;
+        animation-delay: 2s;
+      }
+      .bunga:nth-child(3) {
+        left: 50%;
+        animation-delay: 4s;
+      }
+      .bunga:nth-child(4) {
+        left: 75%;
+        animation-delay: 6s;
+      }
+      .bunga:nth-child(5) {
+        left: 90%;
+        animation-delay: 1s;
+      }
+
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 3.5rem;
+        }
+        .poemArea,
+        .puisiArea {
+          font-size: 1.3rem;
+        }
+        button {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+
+    <audio id="bgmusic" autoplay loop hidden muted>
+      <source src="musik.mp3" type="audio/mp3" />
+    </audio>
+
+    <div class="card">
+      <h1>Untuk Calon Istriku</h1>
+      <div class="heart">❤️</div>
+
+      <button id="tombolNama" onclick="tampilkanNama()">
+        Klik di sini dulu...
+      </button>
+      <div class="name" id="namaTarget" style="display: none"></div>
+      <div class="poemArea" id="mainText" style="display: none"></div>
+
+      <button id="puisiButton" onclick="tampilkanPuisi()" style="display: none">
+        Lihat Pilihan Puisi
+      </button>
+      <div class="puisiArea" id="puisiArea"></div>
+    </div>
+
+    <script>
+      function ketik(teks, elemenId, kecepatan = 40, callback) {
+        const elemen = document.getElementById(elemenId);
+        elemen.innerHTML = "";
+        let i = 0;
+        const interval = setInterval(() => {
+          elemen.innerHTML += teks.charAt(i);
+          i++;
+          if (i >= teks.length) {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, kecepatan);
+      }
+
+      const paragrafUtama = `Untukmu, Sayang…
+
+Awalnya aku hanya mengenalmu sebagai sosok yang ramah dan sederhana.
+Tapi semakin aku mengenalmu, semakin aku mengagumimu.
+Bukan hanya karena wajahmu yang cantik, tapi karena hatimu yang begitu tulus.
+Caramu tersenyum, caramu berbicara dengan lembut, dan caramu peduli pada hal-hal kecil — semuanya membuatku merasa bahwa kamu adalah anugerah yang dikirim Tuhan di waktu yang paling tepat.
+
+Sayang, kamu begitu istimewa.
+Sejak kehadiranmu, aku merasa hidupku punya arah yang lebih jelas.
+Kamu membuatku ingin jadi versi terbaik dari diriku sendiri — bukan karena kamu menuntut, tapi karena kamu pantas mendapatkan yang terbaik.
+Aku ingin mendampingimu dalam tawa dan tangis, dalam suka dan duka, dalam doa dan perjuangan.
+
+Rasa ini tak sekadar suka…
+Ini lebih dari sekadar kagum atau nyaman.
+Aku ingin tumbuh bersamamu.
+Ingin berjuang bersamamu membangun rumah tangga yang penuh cinta, yang menjadikan Allah sebagai porosnya.
+Aku ingin menjadi orang pertama yang kamu temui saat bangun tidur, dan menjadi orang terakhir yang kamu peluk sebelum tidur.
+Aku ingin jadi imam yang menuntunmu, jadi tempat pulangmu, jadi pelindungmu.
+
+Aku tak bisa menjanjikan dunia…
+Aku bukan orang sempurna. Aku banyak kekurangan, banyak kelemahan.
+Tapi satu hal yang bisa kuusahakan: aku akan mencintaimu dengan seluruh hatiku.
+Akan kujaga kepercayaanmu, akan kujaga hatimu seperti menjaga hatiku sendiri.
+Aku akan belajar sabar bersamamu, belajar saling memahami, belajar menerima kekurangan satu sama lain.
+Karena aku percaya, cinta sejati tidak lahir dari kesempurnaan, tapi dari kesediaan untuk saling memperbaiki dan saling melengkapi.
+
+Aku membayangkan masa depan bersamamu…
+Kita duduk berdua di beranda rumah sederhana sambil minum teh hangat.
+Anak-anak kita bermain di halaman, dan kita saling menatap dengan mata yang penuh syukur.
+Hari-hari akan datang dengan segala tantangannya, tapi selama bersamamu, aku yakin kita bisa melewatinya.
+
+Aku ingin menua bersamamu, Sayang.
+Ingin melewati waktu dengan genggaman tanganmu yang hangat.
+Ingin menjadi saksi senyummu setiap pagi, dan menyeka air matamu ketika hari sedang berat.
+Aku ingin tumbuh dalam cinta yang tidak hanya manis, tapi juga kokoh dan berlandaskan iman.
+
+Jika Allah mengizinkan…
+Aku ingin menjadikanmu pendamping hidupku selamanya.
+Aku ingin melamarmu bukan hanya dengan kata-kata, tapi dengan kesungguhan, dengan kesiapan untuk bertanggung jawab atas cinta ini.
+Aku ingin kita menulis cerita bersama, hingga akhir usia.
+
+Semoga Allah meridhoi niat ini.
+Semoga Dia satukan dua hati yang sama-sama berharap dalam sujud-sujud panjang.
+Karena aku percaya, jika doaku bertemu dengan doamu, maka takdir akan menjodohkan kita dalam restu langit.
+
+💍 Dengan sepenuh hati, aku menunggumu di pelaminan, bukan hanya untuk hari itu, tapi untuk seumur hidup.`;
+
+      function tampilkanNama() {
+        document.getElementById("tombolNama").style.display = "none";
+        const musik = document.getElementById("bgmusic");
+        musik.muted = false;
+        musik.volume = 0.6;
+        musik.play();
+
+        const teksNama = "EMI FATIKHA";
+        const elemenNama = document.getElementById("namaTarget");
+        elemenNama.style.display = "block";
+
+        ketik(teksNama, "namaTarget", 70, () => {
+          const area = document.getElementById("mainText");
+          area.style.display = "block";
+          ketik(paragrafUtama, "mainText", 30, () => {
+            document.getElementById("puisiButton").style.display =
+              "inline-block";
+          });
+        });
+      }
+
+      const puisiList = [
+        "Kamu bukan hanya bagian dari doaku,\nkamu adalah alasan aku mengucapkannya setiap malam.",
+        "Setiap langkahku kini punya arah,\nkarena kamu ada di tujuan akhirnya.",
+        "Jika cinta adalah bahasa,\nmaka namamu adalah kata terindah yang terus kuucapkan dalam diam.",
+        "Sayang, kamu bukan hanya hadir di hidupku,\nkamu melengkapinya.",
+        "Bersamamu aku belajar,\nbahwa cinta tak selalu harus mewah,\ncukup saling menjaga dan mendoakan.",
+        "Aku ingin mencintaimu dengan cara yang Allah ridai,\ndengan niat suci, dan hati yang tulus.",
+        "Jika suatu hari nanti kita bersanding,\naku ingin kamu tahu: kamu adalah jawaban dari doa-doa panjangku.",
+      ];
+
+      let index = 0;
+      function tampilkanPuisi() {
+        const area = document.getElementById("puisiArea");
+        area.innerText = puisiList[index];
+        index++;
+        if (index >= puisiList.length) {
+          document.getElementById("puisiButton").style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
