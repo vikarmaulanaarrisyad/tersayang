@@ -14,7 +14,7 @@
       body {
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #2b5876, #4e4376);
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
         font-family: "Poppins", sans-serif;
         min-height: 100vh;
         display: flex;
@@ -22,20 +22,21 @@
         justify-content: center;
         overflow-x: hidden;
         position: relative;
-        color: #fff;
       }
 
       .card {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.15);
         padding: 30px 20px;
         border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(12px);
         max-width: 90%;
         width: 100%;
         text-align: center;
+        color: #ffffff;
         animation: fadeIn 1.5s ease-in-out;
         z-index: 1;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       }
 
       h1 {
@@ -44,17 +45,33 @@
         margin-bottom: 15px;
       }
 
+      .poemArea,
+      .puisiArea,
+      .surpriseText {
+        white-space: pre-wrap;
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.7;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
       .heart {
         font-size: 1.5rem;
-        color: #ffb6c1;
+        color: #ff4d6d;
         animation: pulse 1.5s infinite;
-        margin: 10px 0;
+        display: inline-block;
+        margin: 15px 0;
       }
 
       .name {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: bold;
-        background: linear-gradient(90deg, #ffd1dc, #ffe3e3);
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: shimmer 2s infinite;
@@ -62,20 +79,8 @@
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       }
 
-      .poemArea {
-        white-space: pre-wrap;
-        font-size: 1.1rem;
-        font-weight: 500;
-        line-height: 1.7;
-        background-color: rgba(255, 255, 255, 0.08);
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 15px;
-        box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
-      }
-
       button {
-        margin: 15px 5px;
+        margin: 10px 5px;
         padding: 10px 18px;
         background-color: #ffffff33;
         border: 1px solid #fff;
@@ -89,6 +94,15 @@
 
       button:hover {
         background-color: #ffffff55;
+      }
+
+      .surpriseText {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        display: none;
+        animation: fadeIn 2s ease-in-out;
+        text-shadow: 2px 2px 6px #000;
       }
 
       @keyframes fadeIn {
@@ -123,31 +137,58 @@
         }
       }
 
-      .stars {
+      .bunga {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("https://i.ibb.co/6P9gy4Q/stars.png") repeat;
-        animation: moveStars 100s linear infinite;
+        width: 20px;
+        height: 20px;
+        background-image: url("https://cdn-icons-png.flaticon.com/512/747/747376.png");
+        background-size: cover;
+        opacity: 0.3;
+        animation: float 10s infinite linear;
         z-index: 0;
       }
 
-      @keyframes moveStars {
+      @keyframes float {
         0% {
-          background-position: 0 0;
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
         }
         100% {
-          background-position: -10000px 5000px;
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
         }
+      }
+
+      .bunga:nth-child(1) {
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .bunga:nth-child(2) {
+        left: 20%;
+        animation-delay: 2s;
+      }
+      .bunga:nth-child(3) {
+        left: 50%;
+        animation-delay: 4s;
+      }
+      .bunga:nth-child(4) {
+        left: 75%;
+        animation-delay: 6s;
+      }
+      .bunga:nth-child(5) {
+        left: 90%;
+        animation-delay: 1s;
       }
 
       @media (min-width: 768px) {
         h1 {
-          font-size: 3rem;
+          font-size: 3.5rem;
         }
-        .poemArea {
+        .poemArea,
+        .puisiArea {
           font-size: 1.3rem;
         }
         button {
@@ -157,7 +198,11 @@
     </style>
   </head>
   <body>
-    <div class="stars"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
+    <div class="bunga"></div>
 
     <audio id="bgmusic" autoplay loop hidden muted>
       <source src="musik.mp3" type="audio/mp3" />
@@ -166,11 +211,28 @@
     <div class="card">
       <h1>Untuk Calon Istriku</h1>
       <div class="heart">❤️</div>
+
       <button id="tombolNama" onclick="tampilkanNama()">
-        Klik di sini, Sayang...
+        Klik di sini dulu...
       </button>
       <div class="name" id="namaTarget" style="display: none"></div>
       <div class="poemArea" id="mainText" style="display: none"></div>
+
+      <button id="puisiButton" onclick="tampilkanPuisi()" style="display: none">
+        Lihat Pilihan Puisi
+      </button>
+      <div class="puisiArea" id="puisiArea"></div>
+
+      <button
+        id="btnSurprise"
+        onclick="tampilkanSurprise()"
+        style="display: none"
+      >
+        🎁 Surprise
+      </button>
+      <div class="surpriseText" id="surpriseText">
+        Apakah kamu mau menikah denganku? 💍
+      </div>
     </div>
 
     <script>
@@ -188,41 +250,59 @@
         }, kecepatan);
       }
 
-      const paragrafUtama = `Selamat malam, calon istriku tercinta… 💌
+      const paragrafUtama = `Sayang...
 
-Hari ini, aku meniup lilin ulang tahunku... tapi entah kenapa, satu-satunya harapan yang aku bisikkan hanya tentangmu.
-Tentang kamu yang selalu hadir di sela-sela pikiranku, di doa-doaku yang paling dalam.
-Di antara banyak ucapan yang kuterima hari ini, ucapanmu... adalah yang paling kutunggu, yang paling menyentuh hatiku.
+Dalam diamku, aku banyak berdoa agar kamu adalah akhir dari pencarianku.
+Kamu hadir bukan hanya sebagai kekasih, tapi sebagai cahaya dalam setiap rencana masa depanku.
 
-Aku tidak ingin kado mewah.
-Cukup doamu — itu hadiah terbaik yang aku harapkan di hari spesial ini.
-Doa dari seorang perempuan yang aku cintai dalam diam, dalam sujud, dan dalam harapan panjang menuju masa depan.
+Aku ingin memeluk semua bahagiaku bersamamu.
+Menjadi pelindung saat dunia terlalu berat, dan menjadi sandaran ketika kamu lelah.
+Bukan sekadar pasangan, kamu adalah teman seperjuangan dalam hidup dan akhirat.
 
-Sayangku, kamu adalah alasan mengapa aku ingin menjadi lebih baik.
-Kamu adalah alasan mengapa aku ingin hidup lebih panjang — agar aku bisa menua bersamamu.
-Aku ingin kamu tahu bahwa setiap detak jantungku hari ini berdetak menyebut namamu, dan setiap hembusan napasku adalah rindu yang tak pernah letih.
+Aku ingin malam kita penuh doa,
+pagi kita penuh tawa,
+dan setiap langkah dipenuhi dengan kasih yang saling menguatkan.
 
-Jika nanti kita benar-benar bersama,
-maka malam ini adalah malam di mana cinta kita tumbuh bersama harapan dan keyakinan.
+Di antara banyak nama yang kutemui dalam hidup,
+namamu terasa paling tenang di hati.
+Aku tidak hanya ingin mencintaimu,
+aku ingin menjadikanmu tempat pulang dari segala lelah dan ragu.
 
-Terima kasih sudah menjadi bagian dari langkah-langkah kecilku menuju masa depan.
-Terima kasih sudah memperindah malam ulang tahunku — walau kita belum bisa bertatap langsung.
-Tapi dalam sunyi ini, aku tahu... cintamu menenangkan.
+Maukah kamu melangkah bersamaku,
+menuju hidup yang dipenuhi cinta, tawa, dan keberkahan?
 
-Sekarang, istirahatlah, Sayang...
-Biarkan malam memelukmu dengan lembut.
-Semoga tidurmu malam ini penuh damai dan hangat oleh rinduku.
-Dan saat kamu membuka mata besok pagi,
-ingatlah bahwa ada aku — yang selalu mencintaimu dalam senyap, tapi dalam.
+Selamat malam sayangku...
+Tidurlah dengan tenang.
+Dalam setiap mimpimu, semoga kamu selalu tahu...
+ada seseorang yang memimpikan masa depan bersamamu.
 
-🌙 Selamat tidur, Sayangkuu.
-Malam ini dan seterusnya... aku mencintaimu.`;
+Sayangku...
+
+Setiap hari aku bersyukur karena Allah telah mempertemukan kita. 
+Kamu bukan hanya calon istriku, kamu adalah penenang di setiap gelisah, dan doa yang paling tulus yang pernah kupanjatkan.
+
+Malam ini, aku cuma ingin kamu tahu satu hal...
+Aku mencintaimu, bukan hanya dengan kata-kata manis, tapi dengan doa-doa yang tidak pernah putus.
+Aku mencintaimu dalam diam, dalam sujud-sujud panjang, dalam setiap harapan tentang masa depan yang penuh cinta bersamamu.
+
+Aku ingin kamu jadi ibu dari anak-anakku, jadi teman terbaik dalam setiap perjalanan panjang.
+Kita tidak akan selalu sempurna, tapi selama kita saling menggenggam tangan, aku yakin semua bisa kita lewati.
+
+Tidurlah yang nyenyak malam ini, Sayang...
+Semoga mimpimu indah, dan hatimu tenang.
+Ketahuilah, di sisi langit yang sama, aku di sini memelukmu lewat doa...
+
+Selamat malam, calon istriku tercinta.
+Aku mencintaimu — hari ini, esok, dan selamanya.
+
+Vikar Maulana Arrisyad
+`;
 
       function tampilkanNama() {
         document.getElementById("tombolNama").style.display = "none";
         const musik = document.getElementById("bgmusic");
         musik.muted = false;
-        musik.volume = 0.5;
+        musik.volume = 0.6;
         musik.play();
 
         const teksNama = "EMI FATIKHA";
@@ -232,8 +312,34 @@ Malam ini dan seterusnya... aku mencintaimu.`;
         ketik(teksNama, "namaTarget", 70, () => {
           const area = document.getElementById("mainText");
           area.style.display = "block";
-          ketik(paragrafUtama, "mainText", 30);
+          ketik(paragrafUtama, "mainText", 30, () => {
+            document.getElementById("puisiButton").style.display =
+              "inline-block";
+            document.getElementById("btnSurprise").style.display =
+              "inline-block";
+          });
         });
+      }
+
+      const puisiList = [
+        "Aku tak butuh bintang jatuh,\nkamu saja sudah cukup jadi keajaiban untukku.",
+        "Cintamu seperti doa,\ntak terdengar tapi sangat kurasakan.",
+        "Bersamamu, aku percaya bahwa cinta adalah anugerah terbaik dari Tuhan.",
+        "Kamu adalah detak jantung dalam sunyi,\ndan pelukan dalam dinginnya dunia.",
+      ];
+
+      let index = 0;
+      function tampilkanPuisi() {
+        const area = document.getElementById("puisiArea");
+        area.innerText = puisiList[index];
+        index++;
+        if (index >= puisiList.length) {
+          document.getElementById("puisiButton").style.display = "none";
+        }
+      }
+
+      function tampilkanSurprise() {
+        document.getElementById("surpriseText").style.display = "block";
       }
     </script>
   </body>
